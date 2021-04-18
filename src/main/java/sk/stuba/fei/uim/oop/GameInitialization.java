@@ -10,6 +10,14 @@ public class GameInitialization {
         printGame();
     }
 
+    public int getN() {
+        return n;
+    }
+
+    public Tile[][] getGameplan() {
+        return gameplan;
+    }
+
     public void init() {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
