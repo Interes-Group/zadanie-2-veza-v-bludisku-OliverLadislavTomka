@@ -7,16 +7,14 @@ import java.awt.event.ActionListener;
 public class MyJButton implements ActionListener {
     private final GameInitialization game;
     private final Player player;
-    private final Finish finish;
     private int x;
     MyCanvas myCanvas;
 
-    public MyJButton(MyCanvas myCanvas,int x,GameInitialization game, Player player, Finish finish){
+    public MyJButton(MyCanvas myCanvas,int x,GameInitialization game, Player player){
         this.myCanvas= myCanvas;
         this.x=x;
         this.game=game;
         this.player=player;
-        this.finish=finish;
     }
 
 

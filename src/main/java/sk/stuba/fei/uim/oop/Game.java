@@ -6,8 +6,8 @@ public class Game {
     GameInitialization game = new GameInitialization();
     Player player = new Player();
     Finish finish = new Finish(game.getN()-1);
-    MyJPanel P = new MyJPanel(canvas,game, player,finish);
-    MyCanvas canvas=new MyCanvas(game,player,finish,P);
+    MyCanvas canvas=new MyCanvas(game,player,finish);
+    MyJPanel P = new MyJPanel(game,player,finish,canvas);
 
     public Game(){
         createWindow();

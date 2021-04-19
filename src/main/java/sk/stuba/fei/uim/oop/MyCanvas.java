@@ -7,13 +7,11 @@ public class MyCanvas extends JPanel {
     GameInitialization game;
     Player player;
     Finish finish;
-    MyJPanel myJPanel;
 
-    public MyCanvas(MyJPanel myJPanel,GameInitialization game, Player player, Finish finish){
+    public MyCanvas(GameInitialization game, Player player, Finish finish){
         this.game=game;
         this.player=player;
         this.finish=finish;
-        this.myJPanel=myJPanel;
     }
 
     @Override
@@ -41,9 +39,12 @@ public class MyCanvas extends JPanel {
             player.setWinCounter(player.getWinCounter()+1);
             player.setPosx(0);
             player.setPosy(0);
-            myJPanel.updateWinCounter();
             game.gener();
         }
     }
+
+    /*public void updateWinCounter(){
+        counter.setText ("   Win counter:   " + player.getWinCounter());
+    }*/
 
 }
