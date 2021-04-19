@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class GameInitialization {
-    int n = 25;
+    int n=25;
     private final Tile[][] gameplan = new Tile[n][n];
+
 
     public GameInitialization(){
         init();
@@ -54,7 +55,7 @@ public class GameInitialization {
             }
         }
         Collections.shuffle(zoznamSusedov);
-        while (zoznamSusedov.size()>0) {
+        while (zoznamSusedov.size() > 0) {
             if (trueSused(x, y, zoznamSusedov.get(0))) {
                 switch (zoznamSusedov.get(0)) {
                     case 1:

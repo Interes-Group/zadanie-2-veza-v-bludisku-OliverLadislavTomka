@@ -4,11 +4,13 @@ public class Player {
     private int posx;
     private int posy;
     private int winCounter;
+    private boolean clicked;
 
     public Player() {
         this.posx = 0;
         this.posy = 0;
         this.winCounter = 0;
+        this.clicked = true;
     }
 
     public int getPosx() {
@@ -33,5 +35,13 @@ public class Player {
 
     public void setWinCounter(int winCounter) {
         this.winCounter = winCounter;
+    }
+
+    public boolean isClicked() {
+        return clicked;
+    }
+
+    public void setClicked(boolean clicked) {
+        this.clicked = clicked;
     }
 }
