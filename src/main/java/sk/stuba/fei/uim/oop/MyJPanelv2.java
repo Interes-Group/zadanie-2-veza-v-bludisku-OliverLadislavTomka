@@ -3,22 +3,23 @@ package sk.stuba.fei.uim.oop;
 import javax.swing.*;
 import java.awt.*;
 
-public class MyCanvas extends JPanel {
+public class MyJPanelv2 extends JPanel {
     GameInitialization game;
     Player player;
     Finish finish;
 
-    public MyCanvas(GameInitialization game, Player player, Finish finish){
+    public MyJPanelv2(GameInitialization game, Player player, Finish finish){
         this.game=game;
         this.player=player;
         this.finish=finish;
     }
 
+
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.setColor(Color.GRAY);
-        g.fillRect(0,0,game.getN()*30+38,game.getN()*30+38);
+        //g.setColor(Color.GRAY);
+        //g.fillRect(0,0,game.getN()*30+38,game.getN()*30+38);
         g.setColor(Color.CYAN);
         g.fillRect(finish.getX()*30+12,finish.getX()*30+12,29,29);
         g.setColor(Color.BLACK);
@@ -43,8 +44,6 @@ public class MyCanvas extends JPanel {
         }
     }
 
-    /*public void updateWinCounter(){
-        counter.setText ("   Win counter:   " + player.getWinCounter());
-    }*/
+
 
 }
