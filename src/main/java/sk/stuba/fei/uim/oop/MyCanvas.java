@@ -1,21 +1,24 @@
 package sk.stuba.fei.uim.oop;
 
+import javax.swing.*;
 import java.awt.*;
 
-public class TestCanvas extends Canvas {
+public class MyCanvas extends JPanel {
     GameInitialization game;
     Player player;
     Finish finish;
+    MyJPanel myJPanel;
 
-    public TestCanvas(GameInitialization game, Player player, Finish finish){
+    public MyCanvas(MyJPanel myJPanel,GameInitialization game, Player player, Finish finish){
         this.game=game;
         this.player=player;
         this.finish=finish;
+        this.myJPanel=myJPanel;
     }
 
     @Override
-    public void paint(Graphics g){
-        super.paint(g);
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
         g.setColor(Color.GRAY);
         g.fillRect(0,0,game.getN()*30+38,game.getN()*30+38);
         g.setColor(Color.CYAN);
@@ -33,6 +36,14 @@ public class TestCanvas extends Canvas {
         g.fillOval(player.getPosx()*30+15,player.getPosy()*30+15,20,20);
     }
 
-
+    public void controlFinish(){
+        if (player.getPosx() == finish.getX() && player.getPosx() == player.getPosy()){
+            player.setWinCounter(player.getWinCounter()+1);
+            player.setPosx(0);
+            player.setPosy(0);
+            myJPanel.updateWinCounter();
+            game.gener();
+        }
+    }
 
 }

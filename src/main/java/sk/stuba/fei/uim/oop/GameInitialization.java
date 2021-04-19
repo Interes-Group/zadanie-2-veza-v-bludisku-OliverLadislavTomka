@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class GameInitialization {
-    int n=25;
+    int n=10;
     private final Tile[][] gameplan = new Tile[n][n];
 
 
     public GameInitialization(){
+        gener();
+    }
+
+    public void gener(){
         init();
         createMaze();
     }
@@ -105,4 +109,6 @@ public class GameInitialization {
         }
         return true;
     }
+
+
 }
