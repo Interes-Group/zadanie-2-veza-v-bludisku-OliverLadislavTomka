@@ -12,14 +12,13 @@ public class MyJFrame extends JFrame{
         this.game=game;
         this.canvas=canvas;
         this.P=P;
-        var F = new JFrame();
-        F.setTitle("Maze");
-        F.setResizable(false);
-        F.setSize(game.getN()*30+38,(game.getN()+4)*30);
-        F.setBackground(Color.BLUE);
-        F.setLayout(new BorderLayout());
-        F.add(P,BorderLayout.SOUTH);
-        F.add(canvas);
-        F.setVisible(true);
+        var frame = new JFrame();
+        frame.setTitle("Maze");
+        frame.setResizable(false);
+        frame.setSize(game.getN()*30+38,(game.getN()+4)*30);
+        frame.setLayout(new BorderLayout());
+        frame.add(P,BorderLayout.SOUTH);
+        frame.add(canvas);
+        frame.setVisible(true);
     }
 }

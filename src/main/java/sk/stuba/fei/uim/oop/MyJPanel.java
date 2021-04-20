@@ -18,8 +18,6 @@ public class MyJPanel extends JPanel {
         this.finish=finish;
         this.myJPanelv2 = myJPanelv2;
         this.setLayout(new GridLayout(2,3));
-        //counter.setText ("   Win counter:   " + player.getWinCounter());
-        //this.add(counter);
 
         var buttonClose = new JButton("CLOSE");
         buttonClose.addActionListener(new MyJButton(myJPanelv2,5,game,player));

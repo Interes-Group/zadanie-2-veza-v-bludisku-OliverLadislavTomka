@@ -1,5 +1,6 @@
 package sk.stuba.fei.uim.oop;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,6 +10,7 @@ public class MyJButton implements ActionListener {
     private final Player player;
     private final int x;
     MyJPanelv2 myJPanelv2;
+
 
     public MyJButton(MyJPanelv2 myJPanelv2, int x, GameInitialization game, Player player){
         this.myJPanelv2 = myJPanelv2;
@@ -32,6 +34,8 @@ public class MyJButton implements ActionListener {
                 player.setPosx(0);
                 player.setPosy(0);
                 game.gener();
+                myJPanelv2.counter.setText("Wins:" + player.getWinCounter());
+                myJPanelv2.add(myJPanelv2.counter,BorderLayout.NORTH);
                 break;
             case 1:
                 if (!game.getGameplan()[player.getPosx()][player.getPosy()].isUp()){
