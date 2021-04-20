@@ -1,11 +1,11 @@
 package sk.stuba.fei.uim.oop;
 
 public class Game {
-    GameInitialization game = new GameInitialization();
-    Player player = new Player();
-    Finish finish = new Finish(game.getN()-1);
-    MyCanvas canvas=new MyCanvas(game,player,finish);
-    MyJPanel P = new MyJPanel(game,player,finish,canvas);
+    private final GameInitialization game = new GameInitialization();
+    private final Player player = new Player();
+    private final Finish finish = new Finish(game.getN()-1);
+    private final MyCanvas canvas=new MyCanvas(game,player,finish);
+    private final MyJPanel P = new MyJPanel(game,player,canvas);
 
 
 

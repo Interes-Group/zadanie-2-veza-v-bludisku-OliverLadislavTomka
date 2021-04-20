@@ -6,6 +6,8 @@ public class Tile {
     private boolean left;
     private boolean right;
     private boolean visited;
+    private boolean potential;
+
 
 
     public Tile() {
@@ -14,6 +16,15 @@ public class Tile {
         this.left = true;
         this.right = true;
         this.visited = false;
+        this.potential = false;
+    }
+
+    public boolean isPotential() {
+        return potential;
+    }
+
+    public void setPotential(boolean potential) {
+        this.potential = potential;
     }
 
     public boolean isUp() {

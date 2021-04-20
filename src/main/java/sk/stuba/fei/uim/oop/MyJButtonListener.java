@@ -5,14 +5,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class MyJButton implements ActionListener {
+public class MyJButtonListener implements ActionListener {
     private final GameInitialization game;
     private final Player player;
     private final int x;
-    MyCanvas myCanvas;
+    private final MyCanvas myCanvas;
 
 
-    public MyJButton(MyCanvas myCanvas, int x, GameInitialization game, Player player){
+    public MyJButtonListener(MyCanvas myCanvas, int x, GameInitialization game, Player player){
         this.myCanvas = myCanvas;
         this.x=x;
         this.game=game;
@@ -59,6 +59,9 @@ public class MyJButton implements ActionListener {
                 break;
             case 5:
                 System.exit(0);
+                break;
+            default:
+                break;
         }
     }
 }

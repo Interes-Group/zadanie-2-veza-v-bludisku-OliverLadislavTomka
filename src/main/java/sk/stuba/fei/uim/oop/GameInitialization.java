@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class GameInitialization {
-    int n=11;
+    private final int n=21;
     private final Tile[][] gameplan = new Tile[n][n];
 
 

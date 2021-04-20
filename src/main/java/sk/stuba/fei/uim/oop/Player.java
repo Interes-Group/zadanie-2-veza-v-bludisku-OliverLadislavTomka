@@ -10,7 +10,7 @@ public class Player {
         this.posx = 0;
         this.posy = 0;
         this.winCounter = 0;
-        this.clicked = true;
+        this.clicked = false;
     }
 
     public int getPosx() {
