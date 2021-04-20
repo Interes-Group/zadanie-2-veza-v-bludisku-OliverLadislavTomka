@@ -9,11 +9,11 @@ public class MyJButton implements ActionListener {
     private final GameInitialization game;
     private final Player player;
     private final int x;
-    MyJPanelv2 myJPanelv2;
+    MyCanvas myCanvas;
 
 
-    public MyJButton(MyJPanelv2 myJPanelv2, int x, GameInitialization game, Player player){
-        this.myJPanelv2 = myJPanelv2;
+    public MyJButton(MyCanvas myCanvas, int x, GameInitialization game, Player player){
+        this.myCanvas = myCanvas;
         this.x=x;
         this.game=game;
         this.player=player;
@@ -23,8 +23,8 @@ public class MyJButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         pohyb(x,player,game);
-        myJPanelv2.repaint();
-        myJPanelv2.controlFinish();
+        myCanvas.repaint();
+        myCanvas.controlFinish();
     }
 
     private void pohyb(int x, Player player,GameInitialization game){
@@ -34,8 +34,8 @@ public class MyJButton implements ActionListener {
                 player.setPosx(0);
                 player.setPosy(0);
                 game.gener();
-                myJPanelv2.counter.setText("Wins:" + player.getWinCounter());
-                myJPanelv2.add(myJPanelv2.counter,BorderLayout.NORTH);
+                myCanvas.counter.setText("Wins:" + player.getWinCounter());
+                myCanvas.add(myCanvas.counter,BorderLayout.NORTH);
                 break;
             case 1:
                 if (!game.getGameplan()[player.getPosx()][player.getPosy()].isUp()){

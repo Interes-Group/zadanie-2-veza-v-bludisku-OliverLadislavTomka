@@ -3,7 +3,7 @@ package sk.stuba.fei.uim.oop;
 import javax.swing.*;
 import java.awt.*;
 
-public class MyJPanelv2 extends JPanel {
+public class MyCanvas extends JPanel {
     GameInitialization game;
     Player player;
     Finish finish;
@@ -11,7 +11,7 @@ public class MyJPanelv2 extends JPanel {
 
 
 
-    public MyJPanelv2(GameInitialization game, Player player, Finish finish){
+    public MyCanvas(GameInitialization game, Player player, Finish finish){
         this.game=game;
         this.player=player;
         this.finish=finish;
@@ -50,7 +50,6 @@ public class MyJPanelv2 extends JPanel {
             this.add(counter,BorderLayout.NORTH);
         }
     }
-
 
 
 }
