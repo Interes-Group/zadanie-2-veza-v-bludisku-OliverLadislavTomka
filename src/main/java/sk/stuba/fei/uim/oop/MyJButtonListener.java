@@ -22,6 +22,10 @@ public class MyJButtonListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(player.isClicked()){
+            player.setClicked(false);
+            myCanvas.zmena(false);
+        }
         pohyb(x,player,game);
         myCanvas.repaint();
         myCanvas.controlFinish();

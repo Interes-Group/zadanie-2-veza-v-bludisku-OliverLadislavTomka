@@ -19,22 +19,21 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if (!player.isClicked()) {
-            if ((e.getX() > player.getPosx() * 30 + 23) && (e.getX() < player.getPosx() * 30 + 45) && (e.getY() > player.getPosy() * 30 + 55) && (e.getY() < player.getPosy() * 30 + 78)) {
+            if ((e.getX() > player.getPosx() * 30 + 20) && (e.getX() < player.getPosx() * 30 + 50) && (e.getY() > player.getPosy() * 30 + 50) && (e.getY() < player.getPosy() * 30 + 80)) {
                 player.setClicked(true);
                 naplnPole();
                 myCanvas.repaint();
             }
         }
         else if (player.isClicked()){
-            int x1 = (e.getX()-12)/30;
+            int x1 = (e.getX()-20)/30;
             int y1 = (e.getY()-50)/30;
             if (x1 < game.getN() && y1 < game.getN() && game.getGameplan()[x1][y1].isPotential()){
                 player.setPosx(x1);
                 player.setPosy(y1);
             }
             player.setClicked(false);
-            zmena(false);
-            myCanvas.getPole().clear();
+            myCanvas.zmena(false);
             myCanvas.repaint();
             myCanvas.controlFinish();
         }
@@ -67,7 +66,15 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-
+        if ((e.getX()-20)/30 < game.getN() && (e.getY()-50)/30 < game.getN() && game.getGameplan()[(e.getX()-20)/30][(e.getY()-50)/30].isPotential()) {
+            myCanvas.setDx((e.getX()-20)/30);
+            myCanvas.setDy((e.getY()-50)/30);
+        }
+        else{
+            myCanvas.setDx(game.getN());
+            myCanvas.setDy(game.getN());
+        }
+        myCanvas.repaint();
     }
 
     protected void naplnPole(){
@@ -106,12 +113,7 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
                 }
                 break;
         }
-        zmena(true);
+        myCanvas.zmena(true);
     }
 
-    private void zmena(boolean hodnota){
-        for(Tile tile: myCanvas.getPole()){
-            tile.setPotential(hodnota);
-        }
-    }
 }

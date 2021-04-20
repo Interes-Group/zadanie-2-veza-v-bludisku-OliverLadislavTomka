@@ -8,8 +8,10 @@ public class MyCanvas extends JPanel {
     private final GameInitialization game;
     private final Player player;
     private final Finish finish;
-    private ArrayList<Tile> pole = new ArrayList<>();
+    private final ArrayList<Tile> pole = new ArrayList<>();
     JLabel counter= new JLabel("");
+    private int dx;
+    private int dy;
 
 
 
@@ -37,11 +39,12 @@ public class MyCanvas extends JPanel {
                 if (game.getGameplan()[i][j].isLeft()) g.drawRect(i*30+10,j*30+20,1,31);
                 if (game.getGameplan()[i][j].isRight()) g.drawRect(i*30+30+10,j*30+20,1,31);
                 g.setColor(Color.GREEN);
-                if (game.getGameplan()[i][j].isPotential()) g.fillRect(i*30+21,j*30+31,10,10);
+                if (game.getGameplan()[i][j].isPotential()) g.fillOval(i*30+22,j*30+31,7,7);
             }
         }
         g.setColor(Color.GREEN);
         if (!player.isClicked()) g.fillOval(player.getPosx()*30+15,player.getPosy()*30+25,20,20);
+        else if (player.isClicked() && dx != game.getN() && game.getGameplan()[dx][dy].isPotential()) g.fillOval(dx*30+15,dy*30+25,20,20);
     }
 
     public void controlFinish(){
@@ -59,10 +62,27 @@ public class MyCanvas extends JPanel {
         return pole;
     }
 
-    public void setPole(ArrayList<Tile> pole) {
-        this.pole = pole;
+    void zmena(boolean hodnota){
+        for(Tile tile: pole){
+            tile.setPotential(hodnota);
+        }
+        if (!hodnota) pole.clear();
+    }
+
+    void odkliknutie(){
+        if (player.isClicked()) {
+            player.setClicked(false);
+            this.zmena(false);
+        }
+    }
+
+    public void setDx(int dx) {
+        this.dx = dx;
     }
 
 
+    public void setDy(int dy) {
+        this.dy = dy;
+    }
 
 }

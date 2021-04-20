@@ -22,6 +22,7 @@ public class MyKeyListener implements KeyListener {
 //
     @Override
     public void keyPressed(KeyEvent e) {
+        myCanvas.odkliknutie();
         switch (e.getKeyCode()) {
             case 38:
             case 87:
