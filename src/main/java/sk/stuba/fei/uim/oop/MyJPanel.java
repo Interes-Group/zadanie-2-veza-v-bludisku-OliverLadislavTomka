@@ -50,10 +50,6 @@ public class MyJPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        //updateWinCounter();
-    }
 
-    //public void updateWinCounter(){
-    //    counter.setText ("   Win counter:   " + player.getWinCounter());
-    //}
+    }
 }

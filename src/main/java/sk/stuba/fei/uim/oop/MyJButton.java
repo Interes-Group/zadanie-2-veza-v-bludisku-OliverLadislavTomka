@@ -20,12 +20,12 @@ public class MyJButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        pohyb(x,player,game,e);
+        pohyb(x,player,game);
         myJPanelv2.repaint();
         myJPanelv2.controlFinish();
     }
 
-    private void pohyb(int x, Player player,GameInitialization game,ActionEvent e){
+    private void pohyb(int x, Player player,GameInitialization game){
         switch (x){
             case 0:
                 player.setWinCounter(0);
