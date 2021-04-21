@@ -17,16 +17,15 @@ public class MyKeyListener implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-
     }
-//
+
     @Override
     public void keyPressed(KeyEvent e) {
-        myCanvas.odkliknutie();
+        myCanvas.unmarkPlayer();
         switch (e.getKeyCode()) {
             case 38:
             case 87:
-                if (!game.getGameplan()[player.getPosx()][player.getPosy()].isUp()) {
+                if (!game.getTilesArray()[player.getPosx()][player.getPosy()].isUp()) {
                     player.setPosy(player.getPosy() - 1);
                 }
                 break;
@@ -35,25 +34,25 @@ public class MyKeyListener implements KeyListener {
                 player.setPosx(0);
                 player.setPosy(0);
                 game.gener();
-                myCanvas.counter.setText("Wins:" + player.getWinCounter());
-                myCanvas.add(myCanvas.counter, BorderLayout.NORTH);
+                myCanvas.winCounter.setText("Wins:" + player.getWinCounter());
+                myCanvas.add(myCanvas.winCounter, BorderLayout.NORTH);
                 break;
             case 37:
             case 65:
-                if (!game.getGameplan()[player.getPosx()][player.getPosy()].isLeft()){
-                    player.setPosx(player.getPosx()-1);
+                if (!game.getTilesArray()[player.getPosx()][player.getPosy()].isLeft()) {
+                    player.setPosx(player.getPosx() - 1);
                 }
                 break;
             case 40:
             case 83:
-                if (!game.getGameplan()[player.getPosx()][player.getPosy()].isDown()){
-                    player.setPosy(player.getPosy()+1);
+                if (!game.getTilesArray()[player.getPosx()][player.getPosy()].isDown()) {
+                    player.setPosy(player.getPosy() + 1);
                 }
                 break;
             case 39:
             case 68:
-                if (!game.getGameplan()[player.getPosx()][player.getPosy()].isRight()){
-                    player.setPosx(player.getPosx()+1);
+                if (!game.getTilesArray()[player.getPosx()][player.getPosy()].isRight()) {
+                    player.setPosx(player.getPosx() + 1);
                 }
                 break;
             default:

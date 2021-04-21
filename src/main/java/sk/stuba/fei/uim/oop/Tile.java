@@ -8,8 +8,6 @@ public class Tile {
     private boolean visited;
     private boolean potential;
 
-
-
     public Tile() {
         this.up = true;
         this.down = true;
@@ -60,7 +58,7 @@ public class Tile {
     }
 
     public boolean isVisited() {
-        return visited;
+        return !visited;
     }
 
     public void setVisited(boolean visited) {

@@ -21,19 +21,18 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
         if (!player.isClicked()) {
             if ((e.getX() > player.getPosx() * 30 + 20) && (e.getX() < player.getPosx() * 30 + 50) && (e.getY() > player.getPosy() * 30 + 50) && (e.getY() < player.getPosy() * 30 + 80)) {
                 player.setClicked(true);
-                naplnPole();
+                fill2DArray();
                 myCanvas.repaint();
             }
-        }
-        else if (player.isClicked()){
-            int x1 = (e.getX()-20)/30;
-            int y1 = (e.getY()-50)/30;
-            if (x1 < game.getN() && y1 < game.getN() && game.getGameplan()[x1][y1].isPotential()){
+        } else if (player.isClicked()) {
+            int x1 = (e.getX() - 20) / 30;
+            int y1 = (e.getY() - 50) / 30;
+            if (x1 < game.getN() && y1 < game.getN() && game.getTilesArray()[x1][y1].isPotential()) {
                 player.setPosx(x1);
                 player.setPosy(y1);
             }
             player.setClicked(false);
-            myCanvas.zmena(false);
+            myCanvas.neighborSetter(false);
             myCanvas.repaint();
             myCanvas.controlFinish();
         }
@@ -66,54 +65,53 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        if ((e.getX()-20)/30 < game.getN() && (e.getY()-50)/30 < game.getN() && game.getGameplan()[(e.getX()-20)/30][(e.getY()-50)/30].isPotential()) {
-            myCanvas.setDx((e.getX()-20)/30);
-            myCanvas.setDy((e.getY()-50)/30);
-        }
-        else{
+        if ((e.getX() - 20) / 30 < game.getN() && (e.getY() - 50) / 30 < game.getN() && game.getTilesArray()[(e.getX() - 20) / 30][(e.getY() - 50) / 30].isPotential()
+        && e.getX() > 19 && e.getY() > 49) {
+            myCanvas.setDx((e.getX() - 20) / 30);
+            myCanvas.setDy((e.getY() - 50) / 30);
+        } else {
             myCanvas.setDx(game.getN());
             myCanvas.setDy(game.getN());
         }
         myCanvas.repaint();
     }
 
-    protected void naplnPole(){
+    private void fill2DArray() {
         int x = player.getPosx();
         int y = player.getPosy();
-        myCanvas.getPole().add(game.getGameplan()[x][y]);
+        myCanvas.getPole().add(game.getTilesArray()[x][y]);
         for (int i = 1; i < 5; i++) {
-            checker(i,x,y);
+            neighborChecker(i, x, y);
         }
+        myCanvas.neighborSetter(true);
     }
 
-    private void checker(int index,int x, int y){
-        switch (index){
+    private void neighborChecker(int index, int x, int y) {
+        switch (index) {
             case 1:
-                if (!game.getGameplan()[x][y].isUp()){
-                    myCanvas.getPole().add(game.getGameplan()[x][y-1]);
-                    checker(index,x,y-1);
+                if (!game.getTilesArray()[x][y].isUp()) {
+                    myCanvas.getPole().add(game.getTilesArray()[x][y - 1]);
+                    neighborChecker(index, x, y - 1);
                 }
                 break;
             case 2:
-                if (!game.getGameplan()[x][y].isRight()){
-                    myCanvas.getPole().add(game.getGameplan()[x+1][y]);
-                    checker(index,x+1,y);
+                if (!game.getTilesArray()[x][y].isRight()) {
+                    myCanvas.getPole().add(game.getTilesArray()[x + 1][y]);
+                    neighborChecker(index, x + 1, y);
                 }
                 break;
             case 3:
-                if (!game.getGameplan()[x][y].isDown()){
-                    myCanvas.getPole().add(game.getGameplan()[x][y+1]);
-                    checker(index,x,y+1);
+                if (!game.getTilesArray()[x][y].isDown()) {
+                    myCanvas.getPole().add(game.getTilesArray()[x][y + 1]);
+                    neighborChecker(index, x, y + 1);
                 }
                 break;
             case 4:
-                if (!game.getGameplan()[x][y].isLeft()){
-                    myCanvas.getPole().add(game.getGameplan()[x-1][y]);
-                    checker(index,x-1,y);
+                if (!game.getTilesArray()[x][y].isLeft()) {
+                    myCanvas.getPole().add(game.getTilesArray()[x - 1][y]);
+                    neighborChecker(index, x - 1, y);
                 }
                 break;
         }
-        myCanvas.zmena(true);
     }
-
 }

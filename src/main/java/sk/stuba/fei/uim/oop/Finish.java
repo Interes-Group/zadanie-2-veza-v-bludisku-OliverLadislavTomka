@@ -1,14 +1,13 @@
 package sk.stuba.fei.uim.oop;
 
 public class Finish {
-    private final int x;
+    private final int xy;
 
-    public Finish(int suradnica) {
-        this.x = suradnica;
+    public Finish(int finishCoord) {
+        this.xy = finishCoord;
     }
 
-    public int getX() {
-        return x;
+    public int getXY() {
+        return xy;
     }
-
 }

@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class GameInitialization {
-    private final int n=11;
-    private final Tile[][] gameplan = new Tile[n][n];
+    private final int n = 8;
+    private final Tile[][] tilesArray = new Tile[n][n];
+    private final ArrayList<Integer> neighborArray = new ArrayList<>();
 
-
-    public GameInitialization(){
+    public GameInitialization() {
         gener();
     }
 
-    public void gener(){
+    void gener() {
         init();
         createMaze();
     }
@@ -21,94 +21,77 @@ public class GameInitialization {
         return n;
     }
 
-    public Tile[][] getGameplan() {
-        return gameplan;
+    public Tile[][] getTilesArray() {
+        return tilesArray;
     }
 
     private void init() {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                gameplan[i][j] = new Tile();
+                tilesArray[i][j] = new Tile();
             }
         }
     }
 
-    private void createMaze(){
-        int startX=0;
-        int startY=0;
-        randomizedDFS(startX,startY);
+    private void createMaze() {
+        int startX = 0;
+        int startY = 0;
+        randomizedDFS(startX, startY);
     }
 
-    private void randomizedDFS(int x, int y){
-        gameplan[x][y].setVisited(true);
-        ArrayList<Integer> zoznamSusedov = new ArrayList<>();
-        for (int i = 1; i < 5  ; i++) {
-            switch (i){
-                case 1:
-                    if ((y-1) >= 0 && !gameplan[x][y-1].isVisited()) zoznamSusedov.add(i);
-                    break;
-                case 2:
-                    if ((x+1) < n && !gameplan[x+1][y].isVisited()) zoznamSusedov.add(i);
-                    break;
-                case 3:
-                    if ((y+1) < n && !gameplan[x][y+1].isVisited()) zoznamSusedov.add(i);
-                    break;
-                case 4:
-                    if ((x-1) >= 0 && !gameplan[x-1][y].isVisited()) zoznamSusedov.add(i);
-                    break;
-            }
-        }
-        Collections.shuffle(zoznamSusedov);
-        while (zoznamSusedov.size() > 0) {
-            if (trueSused(x, y, zoznamSusedov.get(0))) {
-                switch (zoznamSusedov.get(0)) {
-                    case 1:
-                        gameplan[x][y - 1].setDown(false);
-                        gameplan[x][y].setUp(false);
-                        randomizedDFS(x, y - 1);
-                        break;
-                    case 2:
-                        gameplan[x + 1][y].setLeft(false);
-                        gameplan[x][y].setRight(false);
-                        randomizedDFS(x + 1, y);
-                        break;
-                    case 3:
-                        gameplan[x][y + 1].setUp(false);
-                        gameplan[x][y].setDown(false);
-                        randomizedDFS(x, y + 1);
-                        break;
-                    case 4:
-                        gameplan[x - 1][y].setRight(false);
-                        gameplan[x][y].setLeft(false);
-                        randomizedDFS(x - 1, y);
-                        break;
-                }
-            }
-            zoznamSusedov.remove(0);
+    private void randomizedDFS(int x, int y) {
+        tilesArray[x][y].setVisited(true);
+        makeNeighborArray(x,y);
+        while (neighborArray.size() > 0) {
+            chooseNeighbor(x,y);
+            makeNeighborArray(x,y);
         }
     }
 
-    private boolean trueSused(int x,int y,int iteracia){
-        switch (iteracia){
+    private void chooseNeighbor(int x, int y){
+        switch (neighborArray.get(0)) {
             case 1:
-                if (gameplan[x][y-1].isVisited())
-                    return false;
-                    break;
+                tilesArray[x][y - 1].setDown(false);
+                tilesArray[x][y].setUp(false);
+                randomizedDFS(x, y - 1);
+                break;
             case 2:
-                if (gameplan[x+1][y].isVisited())
-                    return false;
+                tilesArray[x + 1][y].setLeft(false);
+                tilesArray[x][y].setRight(false);
+                randomizedDFS(x + 1, y);
                 break;
             case 3:
-                if (gameplan[x][y+1].isVisited())
-                    return false;
+                tilesArray[x][y + 1].setUp(false);
+                tilesArray[x][y].setDown(false);
+                randomizedDFS(x, y + 1);
                 break;
             case 4:
-                if (gameplan[x-1][y].isVisited())
-                    return false;
+                tilesArray[x - 1][y].setRight(false);
+                tilesArray[x][y].setLeft(false);
+                randomizedDFS(x - 1, y);
                 break;
         }
-        return true;
     }
 
+    private void makeNeighborArray(int x, int y){
+        neighborArray.clear();
+        for (int i = 1; i < 5; i++) {
+            switch (i) {
+                case 1:
+                    if ((y - 1) >= 0 && tilesArray[x][y - 1].isVisited()) neighborArray.add(i);
+                    break;
+                case 2:
+                    if ((x + 1) < n && tilesArray[x + 1][y].isVisited()) neighborArray.add(i);
+                    break;
+                case 3:
+                    if ((y + 1) < n && tilesArray[x][y + 1].isVisited()) neighborArray.add(i);
+                    break;
+                case 4:
+                    if ((x - 1) >= 0 && tilesArray[x - 1][y].isVisited()) neighborArray.add(i);
+                    break;
+            }
+        }
+        Collections.shuffle(neighborArray);
+    }
 
 }
