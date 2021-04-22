@@ -1,4 +1,6 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.gameEngine;
+
+import sk.stuba.fei.uim.oop.components.Tile;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,7 +13,7 @@ public class GameInitialization {
         gener();
     }
 
-    void gener() {
+    public void gener() {
         init();
         createMaze();
     }

@@ -1,4 +1,8 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.components;
+
+import sk.stuba.fei.uim.oop.gameEngine.GameInitialization;
+import sk.stuba.fei.uim.oop.listeners.MyKeyListener;
+import sk.stuba.fei.uim.oop.listeners.MyMouseListener;
 
 import javax.swing.*;
 import java.awt.*;

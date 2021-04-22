@@ -1,6 +1,9 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.listeners;
 
-import java.awt.*;
+import sk.stuba.fei.uim.oop.components.Player;
+import sk.stuba.fei.uim.oop.components.MyCanvas;
+import sk.stuba.fei.uim.oop.gameEngine.GameInitialization;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -38,8 +41,7 @@ public class MyJButtonListener implements ActionListener {
                 player.setPosx(0);
                 player.setPosy(0);
                 game.gener();
-                myCanvas.winCounter.setText("Wins:   " + player.getWinCounter());
-                myCanvas.add(myCanvas.winCounter, BorderLayout.NORTH);
+                myCanvas.getWinCounter().setText("Wins:   " + player.getWinCounter());
                 break;
             case 1:
                 if (!game.getTilesArray()[player.getPosx()][player.getPosy()].isUp()) {

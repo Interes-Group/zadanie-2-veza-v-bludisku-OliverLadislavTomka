@@ -1,4 +1,7 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.components;
+
+import sk.stuba.fei.uim.oop.gameEngine.GameInitialization;
+import sk.stuba.fei.uim.oop.listeners.MyJButtonListener;
 
 import javax.swing.*;
 import java.awt.*;

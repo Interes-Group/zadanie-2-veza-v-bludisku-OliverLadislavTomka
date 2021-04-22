@@ -1,4 +1,6 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.components;
+
+import sk.stuba.fei.uim.oop.gameEngine.GameInitialization;
 
 import javax.swing.*;
 import java.awt.*;
@@ -61,14 +63,14 @@ public class MyCanvas extends JPanel {
         return pole;
     }
 
-    protected void neighborSetter(boolean hodnota) {
+    public void neighborSetter(boolean hodnota) {
         for (Tile tile : pole) {
             tile.setPotential(hodnota);
         }
         if (!hodnota) pole.clear();
     }
 
-    protected void unmarkPlayer() {
+    public void unmarkPlayer() {
         if (player.isClicked()) {
             player.setClicked(false);
             this.neighborSetter(false);
@@ -81,5 +83,13 @@ public class MyCanvas extends JPanel {
 
     public void setDy(int dy) {
         this.dy = dy;
+    }
+
+    public void setWinCounter(JLabel winCounter) {
+        this.winCounter = winCounter;
+    }
+
+    public JLabel getWinCounter() {
+        return winCounter;
     }
 }

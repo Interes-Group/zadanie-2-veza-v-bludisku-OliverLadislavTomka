@@ -1,4 +1,8 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.listeners;
+
+import sk.stuba.fei.uim.oop.components.Player;
+import sk.stuba.fei.uim.oop.components.MyCanvas;
+import sk.stuba.fei.uim.oop.gameEngine.GameInitialization;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
