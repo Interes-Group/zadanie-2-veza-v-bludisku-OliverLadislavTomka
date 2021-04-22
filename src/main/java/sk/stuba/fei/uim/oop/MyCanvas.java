@@ -38,7 +38,7 @@ public class MyCanvas extends JPanel {
                 if (game.getTilesArray()[i][j].isLeft()) g.drawRect(i * 30 + 10, j * 30 + 20, 1, 31);
                 if (game.getTilesArray()[i][j].isRight()) g.drawRect(i * 30 + 30 + 10, j * 30 + 20, 1, 31);
                 g.setColor(Color.GREEN);
-                if (game.getTilesArray()[i][j].isPotential()) g.fillOval(i * 30 + 22, j * 30 + 31, 7, 7);
+                if (game.getTilesArray()[i][j].isPotential()) g.fillRect(i * 30 + 22, j * 30 + 31, 7, 7);
             }
         }
         g.setColor(Color.GREEN);
@@ -54,7 +54,6 @@ public class MyCanvas extends JPanel {
             player.setPosy(0);
             game.gener();
             this.winCounter.setText("Wins:   " + player.getWinCounter());
-            this.add(winCounter, BorderLayout.NORTH);
         }
     }
 
@@ -80,9 +79,7 @@ public class MyCanvas extends JPanel {
         this.dx = dx;
     }
 
-
     public void setDy(int dy) {
         this.dy = dy;
     }
-
 }

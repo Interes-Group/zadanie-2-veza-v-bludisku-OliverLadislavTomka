@@ -24,5 +24,4 @@ public class MyJFrame extends JFrame {
         frame.setVisible(true);
     }
 
-
 }

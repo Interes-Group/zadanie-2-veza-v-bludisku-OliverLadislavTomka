@@ -7,7 +7,6 @@ public class GameInitialization {
     private final int n = 20;
     private final Tile[][] tilesArray = new Tile[n][n];
     private final ArrayList<Integer> neighborArray = new ArrayList<>();
-
     public GameInitialization() {
         gener();
     }
@@ -93,5 +92,6 @@ public class GameInitialization {
         }
         Collections.shuffle(neighborArray);
     }
+
 
 }
