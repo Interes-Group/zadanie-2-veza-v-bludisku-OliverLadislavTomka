@@ -29,26 +29,26 @@ public class MyCanvas extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.MAGENTA);
-        g.fillRect(0, 0, game.getN() * 30 + 38, game.getN() * 30 + 38);
+        g.fillRect(0, 0, game.getN() * 30 + 38, game.getN() * 30 + 48);
         g.setColor(Color.LIGHT_GRAY);
-        g.fillRect(10, 20, game.getN() * 30, game.getN() * 30);
+        g.fillRect(10, 30, game.getN() * 30, game.getN() * 30);
         g.setColor(Color.CYAN);
-        g.fillRect(finish.getXY() * 30 + 12, finish.getXY() * 30 + 22, 29, 29);
+        g.fillRect(finish.getXY() * 30 + 12, finish.getXY() * 30 + 32, 29, 29);
         for (int i = 0; i < game.getN(); i++) {
             for (int j = 0; j < game.getN(); j++) {
                 g.setColor(Color.WHITE);
-                if (game.getTilesArray()[i][j].isUp()) g.fillRect(i * 30 + 8, j * 30 + 18, 33, 3);
-                if (game.getTilesArray()[i][j].isDown()) g.fillRect(i * 30 + 8, j * 30 + 30 + 18, 33, 3);
-                if (game.getTilesArray()[i][j].isLeft()) g.fillRect(i * 30 + 8, j * 30 + 18, 3, 33);
-                if (game.getTilesArray()[i][j].isRight()) g.fillRect(i * 30 + 30 + 8, j * 30 + 18, 3, 33);
+                if (game.getTilesArray()[i][j].isUp()) g.fillRect(i * 30 + 8, j * 30 + 28, 33, 3);
+                if (game.getTilesArray()[i][j].isDown()) g.fillRect(i * 30 + 8, j * 30 + 30 + 28, 33, 3);
+                if (game.getTilesArray()[i][j].isLeft()) g.fillRect(i * 30 + 8, j * 30 + 28, 3, 33);
+                if (game.getTilesArray()[i][j].isRight()) g.fillRect(i * 30 + 30 + 8, j * 30 + 28, 3, 33);
                 g.setColor(Color.GREEN);
-                if (game.getTilesArray()[i][j].isPotential()) g.fillRect(i * 30 + 22, j * 30 + 31, 7, 7);
+                if (game.getTilesArray()[i][j].isPotential()) g.fillRect(i * 30 + 22, j * 30 + 41, 7, 7);
             }
         }
         g.setColor(Color.GREEN);
-        if (!player.isClicked()) g.fillOval(player.getPosx() * 30 + 13, player.getPosy() * 30 + 23, 22, 22);
+        if (!player.isClicked()) g.fillOval(player.getPosx() * 30 + 13, player.getPosy() * 30 + 33, 22, 22);
         else if (player.isClicked() && dx != game.getN() && game.getTilesArray()[dx][dy].isPotential())
-            g.fillRect(dx * 30 + 14, dy * 30 + 25, 20, 20);
+            g.fillRect(dx * 30 + 14, dy * 30 + 35, 20, 20);
     }
 
     public void controlFinish() {

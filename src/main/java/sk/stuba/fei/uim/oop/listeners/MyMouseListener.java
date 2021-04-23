@@ -24,14 +24,14 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
     public void mouseClicked(MouseEvent e) {
         if (!player.isClicked()) {
             if ((e.getX() > player.getPosx() * 30 + 20) && (e.getX() < player.getPosx() * 30 + 50) &&
-                    (e.getY() > player.getPosy() * 30 + 50) && (e.getY() < player.getPosy() * 30 + 80)) {
+                    (e.getY() > player.getPosy() * 30 + 60) && (e.getY() < player.getPosy() * 30 + 90)) {
                 player.setClicked(true);
                 fill2DArray();
                 myCanvas.repaint();
             }
         } else if (player.isClicked()) {
             int x1 = (e.getX() - 20) / 30;
-            int y1 = (e.getY() - 50) / 30;
+            int y1 = (e.getY() - 60) / 30;
             if (x1 < game.getN() && y1 < game.getN() && game.getTilesArray()[x1][y1].isPotential()) {
                 player.setPosx(x1);
                 player.setPosy(y1);
@@ -70,10 +70,10 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        if ((e.getX() - 20) / 30 < game.getN() && (e.getY() - 50) / 30 < game.getN() &&
-                game.getTilesArray()[(e.getX() - 20) / 30][(e.getY() - 50) / 30].isPotential() && e.getX() > 19 && e.getY() > 49) {
+        if ((e.getX() - 20) / 30 < game.getN() && (e.getY() - 60) / 30 < game.getN() &&
+                game.getTilesArray()[(e.getX() - 20) / 30][(e.getY() - 60) / 30].isPotential() && e.getX() > 19 && e.getY() > 59) {
             myCanvas.setDx((e.getX() - 20) / 30);
-            myCanvas.setDy((e.getY() - 50) / 30);
+            myCanvas.setDy((e.getY() - 60) / 30);
         } else {
             myCanvas.setDx(game.getN());
             myCanvas.setDy(game.getN());

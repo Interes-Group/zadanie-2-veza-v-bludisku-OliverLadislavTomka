@@ -1,12 +1,11 @@
 package sk.stuba.fei.uim.oop.gameEngine;
 
 import sk.stuba.fei.uim.oop.components.Tile;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class GameInitialization {
-    private final int n = 20;
+    private final int n = 8;
     private final Tile[][] tilesArray = new Tile[n][n];
     private final ArrayList<Integer> neighborArray = new ArrayList<>();
     public GameInitialization() {
