@@ -28,25 +28,27 @@ public class MyCanvas extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(Color.GRAY);
+        g.setColor(Color.MAGENTA);
         g.fillRect(0, 0, game.getN() * 30 + 38, game.getN() * 30 + 38);
+        g.setColor(Color.LIGHT_GRAY);
+        g.fillRect(10, 20, game.getN() * 30, game.getN() * 30);
         g.setColor(Color.CYAN);
         g.fillRect(finish.getXY() * 30 + 12, finish.getXY() * 30 + 22, 29, 29);
         for (int i = 0; i < game.getN(); i++) {
             for (int j = 0; j < game.getN(); j++) {
-                g.setColor(Color.BLACK);
-                if (game.getTilesArray()[i][j].isUp()) g.drawRect(i * 30 + 10, j * 30 + 20, 31, 1);
-                if (game.getTilesArray()[i][j].isDown()) g.drawRect(i * 30 + 10, j * 30 + 30 + 20, 31, 1);
-                if (game.getTilesArray()[i][j].isLeft()) g.drawRect(i * 30 + 10, j * 30 + 20, 1, 31);
-                if (game.getTilesArray()[i][j].isRight()) g.drawRect(i * 30 + 30 + 10, j * 30 + 20, 1, 31);
+                g.setColor(Color.WHITE);
+                if (game.getTilesArray()[i][j].isUp()) g.fillRect(i * 30 + 8, j * 30 + 18, 33, 3);
+                if (game.getTilesArray()[i][j].isDown()) g.fillRect(i * 30 + 8, j * 30 + 30 + 18, 33, 3);
+                if (game.getTilesArray()[i][j].isLeft()) g.fillRect(i * 30 + 8, j * 30 + 18, 3, 33);
+                if (game.getTilesArray()[i][j].isRight()) g.fillRect(i * 30 + 30 + 8, j * 30 + 18, 3, 33);
                 g.setColor(Color.GREEN);
                 if (game.getTilesArray()[i][j].isPotential()) g.fillRect(i * 30 + 22, j * 30 + 31, 7, 7);
             }
         }
         g.setColor(Color.GREEN);
-        if (!player.isClicked()) g.fillOval(player.getPosx() * 30 + 15, player.getPosy() * 30 + 25, 20, 20);
+        if (!player.isClicked()) g.fillOval(player.getPosx() * 30 + 13, player.getPosy() * 30 + 23, 22, 22);
         else if (player.isClicked() && dx != game.getN() && game.getTilesArray()[dx][dy].isPotential())
-            g.fillRect(dx * 30 + 15, dy * 30 + 25, 20, 20);
+            g.fillRect(dx * 30 + 14, dy * 30 + 25, 20, 20);
     }
 
     public void controlFinish() {
@@ -83,10 +85,6 @@ public class MyCanvas extends JPanel {
 
     public void setDy(int dy) {
         this.dy = dy;
-    }
-
-    public void setWinCounter(JLabel winCounter) {
-        this.winCounter = winCounter;
     }
 
     public JLabel getWinCounter() {
